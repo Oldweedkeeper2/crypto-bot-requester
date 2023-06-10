@@ -12,9 +12,11 @@ async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin
         context = await browser.new_context()
         page = await context.new_page()
         await page.goto(f'https://mine.exchange/exchange_{coin_from}_to_{coin_to}/')
-        await page.fill('input[name="sum1"]', give)
         if await page.query_selector('input[id="account1"]'):
             await page.fill('input[id="account1"]', coin_from_wallet)
+            
+        if await page.query_selector('input[name="sum1"]'):
+            await page.fill('input[name="sum1"]', give)
         
         input()
         await page.wait_for_timeout(5)
