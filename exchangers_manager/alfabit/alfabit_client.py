@@ -10,7 +10,7 @@ from manifests.tokens_manifest import Tokens
 from alfabit_req import *
 
 
-# check how to accept transaction
+# работает вроде бы
 async def create_order(uid, coin_from_wallet, coin_to_wallet) -> str:
     async with async_playwright() as p:
         browser_type = p.firefox

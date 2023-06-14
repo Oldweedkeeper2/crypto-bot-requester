@@ -120,7 +120,8 @@ class Tokens:
                   'TRX',
                   'USDC',
                   'Polygon',
-                  'XMR']
+                  'XMR',
+                  'RUB']
     
     tokens_ABR_lower = ['zrx',
                         'bnb',

@@ -3,7 +3,7 @@ import asyncio
 
 from playwright.async_api import async_playwright
 
-# просто не хочет работать почему-то
+# подтверждение по почте + cloudflare
 async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin_from_wallet: str,
                        coin_to_wallet: str) -> str or tuple:
     async with async_playwright() as p:
@@ -18,11 +18,10 @@ async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin
         if await page.query_selector('input[name="sum1"]'):
             await page.fill('input[name="sum1"]', give)
         
-        input()
         await page.wait_for_timeout(5)
         await page.fill('input[name="cf6"]', email)
         await page.fill('input[name="account2"]', coin_to_wallet)
-        # await page.click('input[type="submit"]')
+        await page.click('input[type="submit"]')
         await page.check('input[name="check_data"]')
         input()
         await page.click('input[type="submit"]')
@@ -33,6 +32,6 @@ async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin
 
 
 asyncio.run(
-    create_order(coin_from='BTC', coin_to='CARDRUB', give='0.001', email='oleg-ermakov12@mail.ru', coin_from_wallet='1q6pk7gmdvyc48f3j95f3s6mmldvwj6e4wkvp2rjyg5drfr5az3xs2j2pqd',
-                 coin_to_wallet='2200334452384000'))
+    create_order(coin_from='BTC', coin_to='CARDRUB', give='0.001', email='oleg-ermakov11@mail.ru', coin_from_wallet='1q6pk7gmdvyc48f3j95f3s6mmldvwj6e4wkvp2rjyg5drfr5az3xs2j2pqd',
+                 coin_to_wallet='2200700432063815'))
 

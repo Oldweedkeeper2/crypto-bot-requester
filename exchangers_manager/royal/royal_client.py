@@ -2,7 +2,7 @@ import asyncio
 
 from playwright.async_api import async_playwright
 
-
+# работает
 async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin_from_wallet: str) -> str or tuple:
     async with async_playwright() as p:
         browser_type = p.firefox
@@ -20,10 +20,7 @@ async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin
         requisites_list = await page.query_selector_all('[class="input"]')
         # example ['TDqMGjPzY1Jijkm7N6b9wxZQeSrBift2G9', '3500', '3F1tAaz5x1HUXrCNLbtMDqcw6o12Nn4xqX', '0.00934307']
         requisites = [await requisite.get_attribute('value') for requisite in requisites_list]
-        print(requisites[0], page.url)
-        input()
         await page.click('input[type="submit"]')
-        input()
         return requisites[0]
 
 

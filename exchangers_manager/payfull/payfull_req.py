@@ -11,7 +11,7 @@ from manifests.tokens_manifest import Tokens
 from playwright.async_api import async_playwright
 
 
-# convert name into indexes
+# работает вроде как  (Кажется, Вы создаете и не оплачиваете слишком много заявок... Попробуйте позднее, либо обратитесь в чат.)
 async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin_from_wallet: str,
                        coin_to_wallet: str, fio='', phone='') -> str or None:
     # *convert*
@@ -52,11 +52,12 @@ async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin
             error = await page.query_selector('.ajax_post_bids_res')
             return f'error with input data: {await error.inner_text()}'
         await page.wait_for_timeout(20)
+        await asyncio.sleep(60)
         # await page.goto('https://payfull.ru/hst_Ijfkuhc07T6oyn2fhIXqkBApULa6MqDSyfo/')
         requisites = await page.query_selector_all('[class="xchange-steps__datalist-item-1"]')
         requisites = [await requisite.inner_text() for requisite in requisites]
-        input()
         print(requisites)
+        return requisites
 
 
 asyncio.run(create_order(coin_from='QWRUB', coin_to='BTC', give='6500', email='orer-32weq@mail.ru',

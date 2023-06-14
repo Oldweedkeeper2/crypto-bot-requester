@@ -3,7 +3,7 @@ import asyncio
 from playwright.async_api import async_playwright
 
 
-# convert name into indexes
+# работает
 async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin_from_wallet: str,
                        coin_to_wallet: str, fio='', phone='') -> str or None:
     # *convert*
@@ -43,8 +43,13 @@ async def create_order(coin_from: str, coin_to: str, give: str, email: str, coin
         input()
         await page.click('input[id="createzaja"]')
         await page.wait_for_timeout(20)
+        await asyncio.sleep(30)
+        
         requisite = await page.query_selector('span[id="card"]')
         summ = await page.query_selector('span[id="sum"]')
+        await page.wait_for_timeout(20)
+        await asyncio.sleep(30)
+
         requisites = {'requisite': await requisite.inner_text(), 'summ': await summ.inner_text()}
         print(requisites)
         input()

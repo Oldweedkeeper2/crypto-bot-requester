@@ -4,7 +4,7 @@ import httpx
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
 
-
+# тут страница заявки по id токенов
 async def fetch_and_parse_data():
     parsed_data = []
     

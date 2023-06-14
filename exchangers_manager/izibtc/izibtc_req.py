@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 
 
 # doesn`t work, locked api
+# тут капча
 async def fetch_and_parse_data():
     parsed_data = []
     
